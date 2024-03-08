@@ -1,0 +1,15 @@
+[Unit]
+Description=Sample Service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=pi
+WorkingDirectory=/tmp
+ExecStart=/path/to/script.sh
+
+[Install]
+WantedBy=multi-user.target
