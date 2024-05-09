@@ -36,7 +36,7 @@ function delete_oldest() {
 	pushd $TARGET || return 1
 
 	local AVAIL=$(get_avail_megs .)
-	#echo avail=$AVAIL needed=$NEEDED
+	echo avail=$AVAIL needed=$NEEDED
 	while [ $AVAIL -lt $NEEDED ]; do
 		echo Avail=${AVAIL} need=${NEEDED}
 		local baleetme=`ls -1t | tail -n 1`
@@ -63,7 +63,7 @@ function mv_file() {
 function transcode() {
 	local input=$1
 	local output=$2
-	nice -19 ffmpeg -i $input -c:v h264_v4l2m2m -b:v 5000k $output
+	nice -19 ffmpeg -itsscale 0.885 -i $input -c:v h264_v4l2m2m -b:v 5000k $output
 }
 
 
